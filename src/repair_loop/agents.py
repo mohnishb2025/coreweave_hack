@@ -102,7 +102,9 @@ class Fixer(Agent[CandidatePatch]):
                     f"DIAGNOSIS:\n{diagnosis.model_dump_json(indent=2)}",
                     f"PLAN:\n{plan.model_dump_json(indent=2)}",
                     f"REPOSITORY CONTEXT:\n{request.context}",
-                    "Emit a git-compatible unified diff in the diff field.",
+                    "Emit a git-compatible unified diff in the diff field. "
+                    "Start with `diff --git a/<path> b/<path>`, then `--- a/<path>`, "
+                    "`+++ b/<path>`, and at least one `@@` hunk.",
                 ]
             )
         )

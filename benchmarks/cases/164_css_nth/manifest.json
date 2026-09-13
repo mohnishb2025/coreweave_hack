@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "164_css_nth",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "nths.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_nths.py::test_odd_formula",
+    "reason": "nth-child formulas are ignored and never match."
+  }
+}

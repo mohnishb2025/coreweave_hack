@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "146_dns_label",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "dnsnames.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_dnsnames.py::test_underscore_is_invalid",
+    "reason": "Any non-empty label is accepted, including underscores."
+  }
+}

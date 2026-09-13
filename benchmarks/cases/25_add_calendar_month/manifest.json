@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "25_add_calendar_month",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "datetime",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "months.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_months.py::test_january_31_clips_to_february_end",
+    "reason": "A fixed 31-day timedelta is used instead of calendar month arithmetic."
+  }
+}

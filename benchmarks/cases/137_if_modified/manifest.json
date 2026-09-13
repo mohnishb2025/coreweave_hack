@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "137_if_modified",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "conds.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_conds.py::test_equal_is_not_modified",
+    "reason": "Equal Last-Modified and If-Modified-Since is treated as modified."
+  }
+}

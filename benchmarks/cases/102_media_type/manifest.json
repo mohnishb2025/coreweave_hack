@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "102_media_type",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "media.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_media.py::test_charset_is_not_kept",
+    "reason": "The whole header is lowercased, so parameters stay on the type."
+  }
+}

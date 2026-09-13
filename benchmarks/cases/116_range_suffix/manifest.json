@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "116_range_suffix",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "slices.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_slices.py::test_last_two_hundred_bytes",
+    "reason": "A suffix range bytes=-200 is treated as starting at 0."
+  }
+}

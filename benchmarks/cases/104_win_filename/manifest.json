@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "104_win_filename",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "filesafe.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_filesafe.py::test_reserved_aux",
+    "reason": "Only slashes are rewritten, so reserved names and other illegal characters stay."
+  }
+}

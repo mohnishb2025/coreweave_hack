@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "138_ws_accept",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "sockets.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_sockets.py::test_rfc_sample_key",
+    "reason": "The key is Base64-encoded again instead of SHA-1 with the websocket GUID."
+  }
+}

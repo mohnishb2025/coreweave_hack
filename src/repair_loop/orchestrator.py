@@ -59,7 +59,13 @@ class RepairLoop:
 
     def _run_id(self, request: RepairRequest) -> str:
         material = "\0".join(
-            [str(request.repository.resolve()), request.task, request.failure_output]
+            [
+                str(request.repository.resolve()),
+                request.task,
+                request.failure_output,
+                self.config.variant,
+                self.config.model or "",
+            ]
         )
         return hashlib.sha256(material.encode("utf-8")).hexdigest()[:16]
 

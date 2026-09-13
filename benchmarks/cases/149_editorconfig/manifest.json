@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "149_editorconfig",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "editor.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_editor.py::test_python_indent",
+    "reason": "The indent size is hard-coded to 4, ignoring later glob sections."
+  }
+}

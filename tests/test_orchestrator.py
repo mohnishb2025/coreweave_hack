@@ -97,6 +97,21 @@ def test_runs_two_fixers_and_selects_deterministically(tmp_path: Path) -> None:
     assert checkpoints.load(result.run_id).phase == "done"
 
 
+def test_run_ids_include_variant_and_model(tmp_path: Path) -> None:
+    request = RepairRequest(task="repair", repository=tmp_path, failure_output="failed")
+    first = RepairLoop(
+        LoopConfig(variant="single_pass", model="cheap", checkpoint_dir=tmp_path / "a"),
+        inference=FakeInference(),
+        verifier=FakeVerifier(),
+    )
+    second = RepairLoop(
+        LoopConfig(variant="full_team", model="cheap", checkpoint_dir=tmp_path / "b"),
+        inference=FakeInference(),
+        verifier=FakeVerifier(),
+    )
+    assert first._run_id(request) != second._run_id(request)
+
+
 def test_budget_failure_is_checkpointed(tmp_path: Path) -> None:
     config = LoopConfig(
         checkpoint_dir=tmp_path / "checkpoints",

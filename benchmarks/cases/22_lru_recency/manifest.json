@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "22_lru_recency",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "mutable-state",
+    "cache",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "lru.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_lru.py::test_get_refreshes_recency_before_eviction",
+    "reason": "Neither get nor an in-place put moves a key to most-recently-used."
+  }
+}

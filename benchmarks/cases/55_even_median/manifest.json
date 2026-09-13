@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "55_even_median",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "math",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "stats.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_stats.py::test_even_length_averages_the_middle_pair",
+    "reason": "The upper middle element is returned for even-length lists instead of the pair average."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "94_rgb_hex",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "rgb.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_rgb.py::test_short_hex",
+    "reason": "Pairs are sliced from a 3-digit hex string, so the last channel is empty."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "99_weak_etag",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "etags.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_etags.py::test_weak_matches_strong",
+    "reason": "Weak and strong validators are compared as raw strings."
+  }
+}

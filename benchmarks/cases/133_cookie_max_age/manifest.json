@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "133_cookie_max_age",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ages.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ages.py::test_max_age_attribute",
+    "reason": "int() cannot parse a Set-Cookie attribute list."
+  }
+}

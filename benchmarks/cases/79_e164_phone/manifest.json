@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "79_e164_phone",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "phones.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_phones.py::test_parens_and_dashes",
+    "reason": "Only spaces are removed, so punctuation and a 00 prefix stay."
+  }
+}

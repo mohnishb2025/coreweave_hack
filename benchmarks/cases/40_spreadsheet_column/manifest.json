@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "40_spreadsheet_column",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "math",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "columns.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_columns.py::test_column_after_z_uses_two_letters",
+    "reason": "Column labels are a single A-Z letter, so 27 becomes a character after Z."
+  }
+}

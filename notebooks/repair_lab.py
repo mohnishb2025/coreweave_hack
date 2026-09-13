@@ -198,12 +198,13 @@ def _(
             Path("configs/loops.yaml").read_text(encoding="utf-8")
         )["variants"]
         repository_slug = os.getenv("GITHUB_REPOSITORY", "")
-        owner, repository_name = (
-            repository_slug.split("/", 1) if "/" in repository_slug else (None, None)
-        )
-        github_config = config.github_actions.model_copy(
-            update={"owner": owner, "repository": repository_name}
-        )
+        if "/" in repository_slug:
+            owner, repository_name = repository_slug.split("/", 1)
+            github_config = config.github_actions.model_copy(
+                update={"owner": owner, "repository": repository_name}
+            )
+        else:
+            github_config = config.github_actions
         budget = config.budgets.model_copy(
             update={
                 "max_input_tokens": tokens.value,

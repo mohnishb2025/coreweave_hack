@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "185_dmarc_p",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "dmarcs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_dmarcs.py::test_none_with_rua",
+    "reason": "Splitting on p= keeps the rest of the DMARC record."
+  }
+}

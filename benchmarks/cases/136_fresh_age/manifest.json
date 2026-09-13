@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "136_fresh_age",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "freshness.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_freshness.py::test_equal_age_is_stale",
+    "reason": "An Age equal to max-age is treated as still fresh."
+  }
+}

@@ -40,11 +40,14 @@ class GitHubActionsVerifier:
         sleep: Callable[[float], None] = time.sleep,
     ) -> None:
         self.config = config
-        self.owner = config.owner or os.getenv("GITHUB_REPOSITORY_OWNER")
         repository_env = os.getenv("GITHUB_REPOSITORY", "")
-        self.repository = config.repository or (
-            repository_env.split("/", 1)[1] if "/" in repository_env else None
+        env_owner, env_repository = (None, None)
+        if "/" in repository_env:
+            env_owner, env_repository = repository_env.split("/", 1)
+        self.owner = (
+            config.owner or os.getenv("GITHUB_REPOSITORY_OWNER") or env_owner
         )
+        self.repository = config.repository or env_repository
         self.token = (
             token
             or os.getenv("REPAIR_LOOP_GITHUB_TOKEN")

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "165_toml_bool",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "tomls.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_tomls.py::test_true_is_boolean",
+    "reason": "The right-hand side stays a string, so true is not a boolean."
+  }
+}

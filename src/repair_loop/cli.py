@@ -282,14 +282,6 @@ def benchmark(
     try:
         for variant in variants:
             for model in models:
-                orchestrator = _orchestrator(
-                    model=model,
-                    variant=variant,
-                    entity=entity,
-                    project=project,
-                    max_attempts=max_attempts,
-                )
-                method = getattr(orchestrator, "repair", None) or orchestrator.run
                 for case in cases_payload:
                     case_id = case.get("id", case) if isinstance(case, dict) else case
                     request = (
@@ -297,6 +289,14 @@ def benchmark(
                         if not isinstance(case, dict) or "repository" not in case
                         else case
                     )
+                    orchestrator = _orchestrator(
+                        model=model,
+                        variant=variant,
+                        entity=entity,
+                        project=project,
+                        max_attempts=max_attempts,
+                    )
+                    method = getattr(orchestrator, "repair", None) or orchestrator.run
                     result = _invoke(
                         method,
                         request=request,

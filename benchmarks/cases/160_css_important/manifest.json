@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "160_css_important",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "decls.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_decls.py::test_important_is_not_the_value",
+    "reason": "!important is left on the declaration value."
+  }
+}

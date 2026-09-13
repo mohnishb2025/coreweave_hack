@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "175_css_angle",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "angles.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_angles.py::test_half_circle_degrees",
+    "reason": "float() rejects the deg unit on a CSS angle."
+  }
+}

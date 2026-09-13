@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "59_natural_sort",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "ordering",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "labels.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_labels.py::test_file2_comes_before_file10",
+    "reason": "Lexical sort puts file10 before file2."
+  }
+}

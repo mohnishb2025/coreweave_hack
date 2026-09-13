@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "69_multi_suffix",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "filenames.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_filenames.py::test_tar_gz_keeps_tar",
+    "reason": "split('.')[0] drops every dotted segment, not just the last suffix."
+  }
+}

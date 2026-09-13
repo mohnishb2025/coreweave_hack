@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "92_inclusive_span",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "spans.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_spans.py::test_includes_the_end",
+    "reason": "range(start, end) drops the end value."
+  }
+}

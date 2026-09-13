@@ -109,6 +109,16 @@ def test_dispatches_polls_and_validates_artifact(
     assert captured["inputs"]["case_id"] == "01_clamp_boundary"
 
 
+def test_owner_and_repository_are_parsed_from_github_repository(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.delenv("GITHUB_REPOSITORY_OWNER", raising=False)
+    monkeypatch.setenv("GITHUB_REPOSITORY", "mohnishb2025/coreweave_hack")
+    verifier = GitHubActionsVerifier(GitHubActionsConfig(), token="test-token")
+    assert verifier.owner == "mohnishb2025"
+    assert verifier.repository == "coreweave_hack"
+
+
 def test_remote_execution_is_off_by_default(tmp_path: Path) -> None:
     verifier = GitHubActionsVerifier(
         GitHubActionsConfig(owner="owner", repository="repo"),

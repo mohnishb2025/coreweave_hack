@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "50_weekday_origin",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "datetime",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "weekdays.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_weekdays.py::test_sunday_is_not_saturday",
+    "reason": "A Sunday-first name table is indexed with Monday-first weekday numbers."
+  }
+}

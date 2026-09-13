@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "id": "181_ulid_time",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ulids.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ulids.py::test_crockford_timestamp",
+    "reason": "int(..., 32) rejects Crockford Z in a ULID timestamp."
+  }
+}

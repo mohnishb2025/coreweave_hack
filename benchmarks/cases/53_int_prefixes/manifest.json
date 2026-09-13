@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "53_int_prefixes",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "math",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "bases.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_numbers.py::test_hex_prefix_is_base_16",
+    "reason": "int(text) rejects 0x prefixes because the base is implied to be 10."
+  }
+}

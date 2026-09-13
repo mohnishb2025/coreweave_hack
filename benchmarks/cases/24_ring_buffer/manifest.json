@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "24_ring_buffer",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "mutable-state",
+    "collections"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ring.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ring.py::test_full_buffer_is_not_empty",
+    "reason": "Head and tail collide when the buffer is full, so full looks empty."
+  }
+}

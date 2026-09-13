@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "126_cors_wildcard",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "cors.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_cors.py::test_subdomain_wildcard",
+    "reason": "A *.ex.com allow-list is compared as a literal origin string."
+  }
+}

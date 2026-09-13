@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "127_hsts_max_age",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "hsts.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_hsts.py::test_year_and_subdomains",
+    "reason": "int() cannot parse directives after max-age."
+  }
+}

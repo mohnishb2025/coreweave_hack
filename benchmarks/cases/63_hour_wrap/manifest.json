@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "63_hour_wrap",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "clocks.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_clocks.py::test_minus_twenty_five_is_23",
+    "reason": "Adding or subtracting 24 once does not wrap multiple days."
+  }
+}

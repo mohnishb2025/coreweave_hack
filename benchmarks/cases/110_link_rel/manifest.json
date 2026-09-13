@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "110_link_rel",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "links.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_links.py::test_prev_is_the_second_link",
+    "reason": "Only the first href is returned, ignoring the requested rel."
+  }
+}

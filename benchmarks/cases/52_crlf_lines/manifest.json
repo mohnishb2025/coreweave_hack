@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "52_crlf_lines",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "strings",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "lines.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_lines.py::test_crlf_does_not_keep_a_carriage_return",
+    "reason": "Splitting only on LF leaves a CR on the previous line."
+  }
+}

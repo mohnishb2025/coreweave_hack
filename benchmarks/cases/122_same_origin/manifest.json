@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "122_same_origin",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "sites.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_sites.py::test_default_https_port",
+    "reason": "Origins are compared as raw strings, so the default HTTPS port misses."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "150_gitignore_negation",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ignores.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ignores.py::test_negation_restores_file",
+    "reason": "Negation patterns are skipped, so keep.log stays ignored."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "183_css_clamp",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "clamps.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_clamps.py::test_preferred_inside_range",
+    "reason": "clamp() is ignored and 0 is always returned."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "141_env_unquote",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "exports.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_exports.py::test_quoted_spaces",
+    "reason": "Quotes around an env value are kept."
+  }
+}

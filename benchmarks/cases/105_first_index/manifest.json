@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "105_first_index",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "search.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_search.py::test_leftmost_duplicate",
+    "reason": "Binary search returns the first mid hit, not the leftmost index."
+  }
+}

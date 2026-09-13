@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "21_semver_prerelease",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "ordering",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "semver.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_semver.py::test_prerelease_is_less_than_release",
+    "reason": "String order treats a prerelease as greater than its release and 1.10 as less than 1.9."
+  }
+}

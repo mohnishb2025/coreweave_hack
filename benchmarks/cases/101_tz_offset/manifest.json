@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "101_tz_offset",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "offsets.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_offsets.py::test_half_hour_offset",
+    "reason": "int() cannot parse +05:30 as an hour offset."
+  }
+}

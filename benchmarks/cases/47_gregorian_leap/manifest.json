@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "47_gregorian_leap",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "datetime",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "leap.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_leap.py::test_century_not_divisible_by_400_is_common",
+    "reason": "Every year divisible by 4 is treated as a leap year, including 1900."
+  }
+}

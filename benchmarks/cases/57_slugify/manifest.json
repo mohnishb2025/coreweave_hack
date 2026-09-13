@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "57_slugify",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "strings",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "slugs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_slugs.py::test_punctuation_is_not_kept",
+    "reason": "Only spaces are replaced, so punctuation stays in the slug."
+  }
+}

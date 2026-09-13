@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "65_mac_normalize",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "macs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_macs.py::test_dashes_become_colons",
+    "reason": "Only case is folded, so dashes and compact hex stay as-is."
+  }
+}

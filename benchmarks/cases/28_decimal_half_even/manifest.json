@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "28_decimal_half_even",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "math",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "money.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_money.py::test_halfway_value_ties_to_even",
+    "reason": "Halfway values use half-up rounding instead of banker's half-even."
+  }
+}

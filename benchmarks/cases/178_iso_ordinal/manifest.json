@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "178_iso_ordinal",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "yeardays.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_yeardays.py::test_leap_last_day",
+    "reason": "YYYY-DDD is parsed as a calendar YYYY-MM-DD date."
+  }
+}

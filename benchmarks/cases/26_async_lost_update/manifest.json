@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "26_async_lost_update",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "async",
+    "mutable-state",
+    "concurrency"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "counter.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_counter.py::test_concurrent_increments_are_not_lost",
+    "reason": "The counter yields between read and write, so concurrent tasks overwrite each other."
+  }
+}

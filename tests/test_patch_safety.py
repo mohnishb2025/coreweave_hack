@@ -16,6 +16,19 @@ def test_accepts_small_source_patch() -> None:
     assert validate_unified_diff(VALID) == ["src/app.py"]
 
 
+def test_accepts_unified_diff_without_diff_git_header() -> None:
+    diff = """--- a/clamp.py
++++ b/clamp.py
+@@ -1,4 +1,4 @@
+ def clamp(value, low, high):
+     if value >= high:
+-        return high - 1
++        return high
+     return max(low, value)
+"""
+    assert validate_unified_diff(diff) == ["clamp.py"]
+
+
 @pytest.mark.parametrize(
     "diff",
     [

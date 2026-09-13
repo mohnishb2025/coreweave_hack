@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "98_angle_wrap",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "angles.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_angles.py::test_two_full_turns",
+    "reason": "Adding or subtracting 360 once does not wrap multiple turns."
+  }
+}

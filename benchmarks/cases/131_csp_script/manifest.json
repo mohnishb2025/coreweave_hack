@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "131_csp_script",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "csp.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_csp.py::test_evil_is_not_listed",
+    "reason": "Every script source is allowed, so CSP is a no-op."
+  }
+}

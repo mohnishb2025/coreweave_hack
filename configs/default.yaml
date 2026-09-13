@@ -32,8 +32,8 @@ sandbox:
   pids_limit: 256
 verifier: github_actions
 github_actions:
-  owner: null
-  repository: null
+  owner: mohnishb2025
+  repository: coreweave_hack
   workflow: verify-candidate.yml
   ref: main
   timeout_seconds: 900

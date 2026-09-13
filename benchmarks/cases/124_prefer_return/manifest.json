@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "124_prefer_return",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "prefers.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_prefers.py::test_minimal_preference",
+    "reason": "The first key is used, so wait=5, return=representation is missed."
+  }
+}

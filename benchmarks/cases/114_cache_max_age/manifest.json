@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "114_cache_max_age",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "cachectl.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_cachectl.py::test_public_max_age",
+    "reason": "int() cannot parse a Cache-Control list."
+  }
+}

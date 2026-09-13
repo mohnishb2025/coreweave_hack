@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "78_mime_guess",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "mimes.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_mimes.py::test_uppercase_jpeg_extension",
+    "reason": "Only a lowercase .jpg suffix is recognized."
+  }
+}

@@ -71,7 +71,10 @@ def validate_unified_diff(diff: str, policy: PatchPolicy | None = None) -> list[
             match = _PATH_HEADER.match(line)
             if not match:
                 raise UnsafePatch(f"malformed path header: {line}")
-            _assert_allowed(_normalize(match.group(1)), policy)
+            path = _normalize(match.group(1))
+            _assert_allowed(path, policy)
+            if line.startswith("+++ ") and path is not None:
+                files.add(path.as_posix())
         elif line.startswith("@@ "):
             has_hunk = True
         elif line.startswith(("+", "-")):
@@ -79,8 +82,8 @@ def validate_unified_diff(diff: str, policy: PatchPolicy | None = None) -> list[
         elif line.startswith(("new file mode 120000", "old mode 120000")):
             raise UnsafePatch("symbolic links are forbidden")
 
-    if diff_headers == 0 or not has_hunk:
-        raise UnsafePatch("patch must contain git diff headers and at least one hunk")
+    if not files or not has_hunk:
+        raise UnsafePatch("patch must contain file headers and at least one hunk")
     if len(files) > policy.max_files:
         raise UnsafePatch("patch exceeds file limit")
     if changed_lines > policy.max_changed_lines:

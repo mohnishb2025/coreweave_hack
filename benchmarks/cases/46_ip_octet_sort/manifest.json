@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "46_ip_octet_sort",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "ordering",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ips.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ips.py::test_tenth_address_is_after_the_second",
+    "reason": "String sort puts 10.0.0.10 before 10.0.0.2."
+  }
+}

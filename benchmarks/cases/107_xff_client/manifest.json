@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "107_xff_client",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "forwards.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_forwards.py::test_leftmost_is_the_client",
+    "reason": "X-Forwarded-For is read from the right, so a proxy address is treated as the client."
+  }
+}

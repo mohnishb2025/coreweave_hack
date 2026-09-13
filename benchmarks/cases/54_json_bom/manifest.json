@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "54_json_bom",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "payload.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_payload.py::test_utf8_bom_is_ignored",
+    "reason": "json.loads rejects a UTF-8 BOM before the first brace."
+  }
+}

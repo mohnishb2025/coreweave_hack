@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "119_empty_fields",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "fields.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_fields.py::test_keeps_empty_middle",
+    "reason": "Empty fields are dropped instead of kept."
+  }
+}

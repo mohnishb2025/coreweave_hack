@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "125_vary_fields",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "varies.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_varies.py::test_two_headers",
+    "reason": "The whole Vary header is treated as one field name."
+  }
+}

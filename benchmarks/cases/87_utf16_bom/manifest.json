@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "87_utf16_bom",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "encoding",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "wide.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_wide.py::test_le_bom_is_not_in_the_text",
+    "reason": "UTF-16LE decode keeps the BOM as a character."
+  }
+}

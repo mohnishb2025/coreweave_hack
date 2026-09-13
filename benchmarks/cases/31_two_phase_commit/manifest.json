@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "31_two_phase_commit",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "multi-file",
+    "mutable-state",
+    "transactions"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "store/__init__.py",
+    "store/journal.py",
+    "store/service.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_store.py::test_abort_clears_prepared_writes",
+    "reason": "Abort is a no-op, so prepared writes leak in the journal."
+  }
+}

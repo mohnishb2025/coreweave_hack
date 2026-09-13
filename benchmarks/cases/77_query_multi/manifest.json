@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "77_query_multi",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "params.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_params.py::test_repeated_key_keeps_both",
+    "reason": "The first matching key is returned and later values are dropped."
+  }
+}

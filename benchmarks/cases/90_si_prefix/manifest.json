@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "90_si_prefix",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "units.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_units.py::test_kilo_suffix",
+    "reason": "float() does not understand a trailing SI prefix."
+  }
+}

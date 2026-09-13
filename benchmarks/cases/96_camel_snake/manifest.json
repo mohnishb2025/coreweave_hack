@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "96_camel_snake",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "snakes.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_snakes.py::test_hello_world",
+    "reason": "lower() does not insert underscores at case changes."
+  }
+}

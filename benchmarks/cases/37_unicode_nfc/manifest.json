@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "37_unicode_nfc",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "names.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_names.py::test_composed_and_decomposed_cafe_match",
+    "reason": "Lookup uses raw code-point identity, so NFC and NFD keys miss each other."
+  }
+}

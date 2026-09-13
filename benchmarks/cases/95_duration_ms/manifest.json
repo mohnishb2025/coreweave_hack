@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "95_duration_ms",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "waits.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_waits.py::test_fractional_seconds",
+    "reason": "int() does not parse a trailing time unit."
+  }
+}

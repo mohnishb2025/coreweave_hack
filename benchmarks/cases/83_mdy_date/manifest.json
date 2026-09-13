@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "83_mdy_date",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "dates.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_dates.py::test_january_second",
+    "reason": "The slash date is parsed as day/month/year, so 01/02 is February 1."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "177_http_priority",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "prios.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_prios.py::test_incremental_with_urgency",
+    "reason": "int() is applied to the whole Priority header."
+  }
+}

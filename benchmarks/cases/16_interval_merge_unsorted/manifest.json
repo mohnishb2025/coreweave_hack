@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "16_interval_merge_unsorted",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "collections",
+    "ordering"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "intervals.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_intervals.py::test_overlapping_out_of_order_ranges_collapse",
+    "reason": "Intervals are merged in list order instead of after sorting by start."
+  }
+}

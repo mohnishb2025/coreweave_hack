@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "143_pem_body",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "encoding",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "certs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_certs.py::test_hello_der",
+    "reason": "BEGIN/END banners are kept and the Base64 body is not decoded."
+  }
+}

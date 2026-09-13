@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "161_mq_min_width",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "mediaq.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_mediaq.py::test_tablet_breakpoint",
+    "reason": "The media query is ignored and 0 is always returned."
+  }
+}

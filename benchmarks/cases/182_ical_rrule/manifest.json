@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "182_ical_rrule",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "rrules.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_rrules.py::test_byday_before_freq",
+    "reason": "The last key=value wins, so FREQ becomes the weekday list."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "39_ttl_alias",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "mutable-state",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ttl.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ttl.py::test_value_is_fresh_on_the_expiry_instant",
+    "reason": "Expiry uses a strict greater-than check, so the exact expiry instant is treated as stale."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "80_damerau",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "transposes.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_transposes.py::test_adjacent_swap_is_one",
+    "reason": "Levenshtein counts a transposition as two substitutions."
+  }
+}

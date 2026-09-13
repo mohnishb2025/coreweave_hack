@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "20_json_pointer",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "encoding"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "pointer.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_pointer.py::test_escaped_slash_is_one_key",
+    "reason": "JSON Pointer segments are not unescaped, so ~1 is not treated as a slash."
+  }
+}

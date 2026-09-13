@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "29_iso_week_year",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "datetime",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "weeks.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_weeks.py::test_late_december_can_belong_to_next_iso_year",
+    "reason": "Calendar year and %W week numbers are not ISO-8601 week dates."
+  }
+}

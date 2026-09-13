@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "145_mailto",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "mailtos.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_mailtos.py::test_subject_is_not_the_address",
+    "reason": "Everything after mailto: is kept, including the query string."
+  }
+}

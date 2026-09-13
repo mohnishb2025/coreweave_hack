@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "108_cookie_quoted",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "crumbs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_crumbs.py::test_semicolon_inside_quotes",
+    "reason": "split(';') cuts through a quoted cookie value."
+  }
+}

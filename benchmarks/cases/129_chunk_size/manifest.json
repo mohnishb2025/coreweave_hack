@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "129_chunk_size",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "chunks.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_chunks.py::test_hex_chunk_size",
+    "reason": "Chunk sizes are hex, so int('1a') without a base fails."
+  }
+}

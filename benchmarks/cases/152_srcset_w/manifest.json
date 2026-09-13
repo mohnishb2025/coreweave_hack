@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "152_srcset_w",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "srcsets.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_srcsets.py::test_picks_the_800w",
+    "reason": "The first candidate is always returned, ignoring w descriptors."
+  }
+}

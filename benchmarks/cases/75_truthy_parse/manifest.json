@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "75_truthy_parse",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "exceptions",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "flags.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_flags.py::test_false_string_is_false",
+    "reason": "bool('false') is True because the string is non-empty."
+  }
+}

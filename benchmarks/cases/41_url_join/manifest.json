@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "41_url_join",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "paths",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "urls.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_urls.py::test_parent_segment_walks_up_the_base_path",
+    "reason": "Slash concatenation keeps .. in the URL instead of resolving it."
+  }
+}

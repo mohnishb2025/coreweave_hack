@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "158_basic_auth",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "basics.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_basics.py::test_alice",
+    "reason": "The Base64 blob is returned instead of the decoded username."
+  }
+}

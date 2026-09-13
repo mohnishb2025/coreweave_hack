@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "34_cidr_unaligned",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "cidr.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_cidr.py::test_slash_12_is_not_the_first_octet",
+    "reason": "Containment keeps whole octets only, so /12 is treated like /8."
+  }
+}

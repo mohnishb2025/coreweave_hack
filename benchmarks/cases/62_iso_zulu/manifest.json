@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "62_iso_zulu",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "stamps.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_stamps.py::test_zulu_is_utc",
+    "reason": "Stripping Z leaves a naive datetime that is not UTC."
+  }
+}

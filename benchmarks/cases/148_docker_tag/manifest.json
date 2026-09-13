@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "148_docker_tag",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "images.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_images.py::test_explicit_tag",
+    "reason": "The whole reference is treated as the name and latest is always used."
+  }
+}

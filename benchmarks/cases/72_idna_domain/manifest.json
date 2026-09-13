@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "72_idna_domain",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "domains.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_domains.py::test_umlaut_domain_becomes_punycode",
+    "reason": "Lowercasing does not punycode internationalized domain labels."
+  }
+}

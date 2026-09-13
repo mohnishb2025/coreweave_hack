@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "88_isbn13",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "checksum",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "isbn13.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_isbn13.py::test_plain_isbn13",
+    "reason": "ISBN-13 uses alternating 1/3 weights, not a digit sum."
+  }
+}

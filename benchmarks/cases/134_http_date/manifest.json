@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "134_http_date",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "imf.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_imf.py::test_imf_fixdate",
+    "reason": "fromisoformat does not parse IMF-fixdate HTTP dates."
+  }
+}

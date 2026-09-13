@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "111_retry_units",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "time",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "delays.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_delays.py::test_minutes",
+    "reason": "int() does not parse a trailing time unit."
+  }
+}

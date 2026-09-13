@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "42_glob_suffix",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "strings",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "globs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_globs.py::test_star_txt_does_not_match_backup_suffix",
+    "reason": "A substring check treats *.txt as 'txt anywhere', so backups still match."
+  }
+}

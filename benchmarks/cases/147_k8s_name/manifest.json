@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "147_k8s_name",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "kube.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_kube.py::test_uppercase_is_invalid",
+    "reason": "Any non-empty name is accepted, including uppercase RFC 1123 violations."
+  }
+}

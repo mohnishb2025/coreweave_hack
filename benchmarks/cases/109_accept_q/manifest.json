@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "109_accept_q",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "ordering",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "accepts.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_accepts.py::test_default_q_beats_low_q",
+    "reason": "The first listed type is chosen even when its q-value is lower."
+  }
+}

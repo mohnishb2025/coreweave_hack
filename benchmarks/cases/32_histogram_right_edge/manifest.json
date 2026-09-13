@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "32_histogram_right_edge",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "collections",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "bins.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_bins.py::test_rightmost_edge_belongs_to_last_bin",
+    "reason": "The last histogram edge is exclusive, so the maximum value is rejected."
+  }
+}

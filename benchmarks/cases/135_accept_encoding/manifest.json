@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "135_accept_encoding",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "ordering",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "codings.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_codings.py::test_default_q_beats_deflate",
+    "reason": "The first listed coding is chosen even when its q-value is lower."
+  }
+}

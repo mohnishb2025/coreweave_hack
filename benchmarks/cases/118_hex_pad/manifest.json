@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "118_hex_pad",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "hexes.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_hexes.py::test_ten_in_four_digits",
+    "reason": "hex() is not zero-padded to the requested width."
+  }
+}

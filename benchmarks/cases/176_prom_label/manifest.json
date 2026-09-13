@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "176_prom_label",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "series.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_series.py::test_one_label",
+    "reason": "Prometheus labels are ignored and an empty map is always returned."
+  }
+}

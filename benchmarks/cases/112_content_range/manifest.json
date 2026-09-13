@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "112_content_range",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ranges.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ranges.py::test_first_five_hundred_bytes",
+    "reason": "The header string is returned instead of parsed start, end, and total."
+  }
+}

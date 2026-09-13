@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "68_neg_remainder",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "remainders.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_remainders.py::test_negative_dividend_is_non_negative",
+    "reason": "Truncating toward zero yields a negative remainder for -5 % 3."
+  }
+}

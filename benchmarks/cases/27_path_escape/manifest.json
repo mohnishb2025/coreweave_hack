@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "27_path_escape",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "paths",
+    "validation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "paths.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_paths.py::test_parent_escape_is_rejected",
+    "reason": "Joining a parent or absolute segment is allowed to leave the root."
+  }
+}

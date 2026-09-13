@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "18_atomic_transfer",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "mutable-state",
+    "multi-file",
+    "transactions"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "bank/__init__.py",
+    "bank/accounts.py",
+    "bank/ledger.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_bank.py::test_failed_transfer_does_not_debit_source",
+    "reason": "The ledger mutates the caller's mapping before the insufficient-funds check."
+  }
+}

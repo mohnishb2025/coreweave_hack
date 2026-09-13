@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import runpy
 from pathlib import Path
 
 ROOT = Path(__file__).parent / "cases"
@@ -430,7 +431,185 @@ def test_snapshots_are_distinct_objects():
         "expected": "tests/test_inventory.py::test_before_snapshot_is_unchanged",
         "reason": "The snapshot aliases the live mutable stock mapping.",
     },
+    {
+        "id": "16_interval_merge_unsorted",
+        "difficulty": "hard",
+        "tags": ["boundary", "collections", "ordering"],
+        "files": {
+            "intervals.py": """def merge(ranges):
+    ranges = [list(item) for item in ranges]
+    merged = [ranges[0]]
+    for start, end in ranges[1:]:
+        if start <= merged[-1][1]:
+            merged[-1][1] = max(merged[-1][1], end)
+        else:
+            merged.append([start, end])
+    return merged
+""",
+            "tests/test_intervals.py": """from intervals import merge
+
+def test_overlapping_out_of_order_ranges_collapse():
+    assert merge([[8, 10], [1, 3], [2, 6]]) == [[1, 6], [8, 10]]
+""",
+            "../hidden_tests/test_regression.py": """from intervals import merge
+
+def test_touching_and_contained_ranges():
+    assert merge([[5, 5], [1, 4], [4, 7], [15, 18]]) == [[1, 7], [15, 18]]
+""",
+        },
+        "expected": "tests/test_intervals.py::test_overlapping_out_of_order_ranges_collapse",
+        "reason": "Intervals are merged in list order instead of after sorting by start.",
+    },
+    {
+        "id": "17_rate_limit_window",
+        "difficulty": "hard",
+        "tags": ["boundary", "time", "multi-file"],
+        "files": {
+            "limiter/__init__.py": """from .policy import accept
+""",
+            "limiter/window.py": """def recent(history, now, window):
+    return [stamp for stamp in history if now - stamp < window]
+""",
+            "limiter/policy.py": """from .window import recent
+
+def accept(history, now, limit, window):
+    history.append(now)
+    return len(recent(history, now, window)) <= limit
+""",
+            "tests/test_limiter.py": """from limiter import accept
+
+def test_event_on_window_boundary_still_counts():
+    history = [0, 4]
+    assert accept(history, 10, limit=3, window=10) is True
+    assert accept([0, 4, 10], 10, limit=3, window=10) is False
+""",
+            "../hidden_tests/test_regression.py": """from limiter import accept
+
+def test_zero_window_is_exact_timestamp_only():
+    assert accept([], 5, limit=1, window=0) is True
+    assert accept([5], 5, limit=1, window=0) is False
+    assert accept([4], 5, limit=1, window=0) is True
+""",
+        },
+        "expected": "tests/test_limiter.py::test_event_on_window_boundary_still_counts",
+        "reason": "The sliding window uses a strict inequality, so boundary events are ignored.",
+    },
+    {
+        "id": "18_atomic_transfer",
+        "difficulty": "hard",
+        "tags": ["mutable-state", "multi-file", "transactions"],
+        "files": {
+            "bank/__init__.py": """from .ledger import transfer
+""",
+            "bank/accounts.py": """def copy_accounts(accounts):
+    return accounts
+""",
+            "bank/ledger.py": """from .accounts import copy_accounts
+
+def transfer(accounts, source, dest, amount):
+    working = copy_accounts(accounts)
+    working[source] -= amount
+    if working[source] < 0:
+        raise ValueError("insufficient funds")
+    working[dest] += amount
+    return working
+""",
+            "tests/test_bank.py": """import pytest
+from bank import transfer
+
+def test_failed_transfer_does_not_debit_source():
+    start = {"a": 10, "b": 1}
+    with pytest.raises(ValueError, match="insufficient"):
+        transfer(start, "a", "b", 15)
+    assert start == {"a": 10, "b": 1}
+""",
+            "../hidden_tests/test_regression.py": """from bank import transfer
+
+def test_successful_transfer_does_not_alias_input():
+    start = {"a": 10, "b": 1}
+    result = transfer(start, "a", "b", 4)
+    assert result == {"a": 6, "b": 5}
+    assert start == {"a": 10, "b": 1}
+    assert result is not start
+""",
+        },
+        "expected": "tests/test_bank.py::test_failed_transfer_does_not_debit_source",
+        "reason": "The ledger mutates the caller's mapping before the insufficient-funds check.",
+    },
+    {
+        "id": "19_topo_cycle",
+        "difficulty": "hard",
+        "tags": ["graph", "ordering", "exceptions"],
+        "files": {
+            "schedule.py": """def order(graph):
+    remaining = {node: set(deps) for node, deps in graph.items()}
+    done = []
+    while remaining:
+        ready = [node for node, deps in remaining.items() if not deps]
+        if not ready:
+            break
+        node = sorted(ready)[0]
+        done.append(node)
+        del remaining[node]
+        for deps in remaining.values():
+            deps.discard(node)
+    return done
+""",
+            "tests/test_schedule.py": """import pytest
+from schedule import order
+
+def test_cycle_is_an_error():
+    with pytest.raises(ValueError, match="cycle"):
+        order({"build": ["test"], "test": ["build"]})
+""",
+            "../hidden_tests/test_regression.py": """from schedule import order
+
+def test_diamond_dependencies_keep_prereqs_first():
+    result = order({"d": ["b", "c"], "b": ["a"], "c": ["a"], "a": []})
+    assert result.index("a") < result.index("b")
+    assert result.index("a") < result.index("c")
+    assert result.index("b") < result.index("d")
+    assert result.index("c") < result.index("d")
+""",
+        },
+        "expected": "tests/test_schedule.py::test_cycle_is_an_error",
+        "reason": "A cyclic dependency returns a partial order instead of raising.",
+    },
+    {
+        "id": "20_json_pointer",
+        "difficulty": "hard",
+        "tags": ["parsing", "transformation", "encoding"],
+        "files": {
+            "pointer.py": """def resolve(document, pointer):
+    current = document
+    for part in pointer.lstrip("/").split("/"):
+        current = current[part]
+    return current
+""",
+            "tests/test_pointer.py": """from pointer import resolve
+
+def test_escaped_slash_is_one_key():
+    document = {"a/b": 3, "a": {"b": 9}}
+    assert resolve(document, "/a~1b") == 3
+""",
+            "../hidden_tests/test_regression.py": """from pointer import resolve
+
+def test_tilde_and_nested_escape():
+    document = {"~": {"x": 1}, "m~n": 4}
+    assert resolve(document, "/~0/x") == 1
+    assert resolve(document, "/m~0n") == 4
+""",
+        },
+        "expected": "tests/test_pointer.py::test_escaped_slash_is_one_key",
+        "reason": "JSON Pointer segments are not unescaped, so ~1 is not treated as a slash.",
+    },
 ]
+
+_extra = runpy.run_path(str(Path(__file__).with_name("extra_cases.py")))
+CASES.extend(_extra["EXTRA_CASES"])
+for _case in CASES:
+    if "fixed" not in _case and _case["id"] in _extra["FIXED_BY_ID"]:
+        _case["fixed"] = _extra["FIXED_BY_ID"][_case["id"]]
 
 
 def build() -> None:

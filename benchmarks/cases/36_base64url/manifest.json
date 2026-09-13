@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "36_base64url",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "tokens.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_tokens.py::test_url_safe_alphabet_without_padding",
+    "reason": "Standard Base64 rejects -/_ and missing padding."
+  }
+}

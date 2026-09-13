@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "153_xml_attr",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "attrs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_attrs.py::test_title_with_spaces",
+    "reason": "split() cuts a quoted attribute value at the first space."
+  }
+}

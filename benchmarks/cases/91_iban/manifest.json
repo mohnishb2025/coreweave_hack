@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "91_iban",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "checksum",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "ibans.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_ibans.py::test_german_example",
+    "reason": "Country prefix and length are not the IBAN mod-97 checksum."
+  }
+}

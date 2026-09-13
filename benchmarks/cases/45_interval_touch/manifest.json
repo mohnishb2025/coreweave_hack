@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "45_interval_touch",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "collections",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "overlap.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_overlap.py::test_touching_endpoints_overlap",
+    "reason": "Closed intervals that only share an endpoint are treated as disjoint."
+  }
+}

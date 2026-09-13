@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "144_quoted_escape",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "quotes.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_quotes.py::test_escaped_quote",
+    "reason": "strip('\"') leaves the escaped quote backslash in place."
+  }
+}

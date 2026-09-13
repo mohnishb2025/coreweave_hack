@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "61_float_cents",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "money",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "cents.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_cents.py::test_one_fifteen_is_one_hundred_fifteen_cents",
+    "reason": "int(dollars * 100) truncates the binary fraction of 1.15."
+  }
+}

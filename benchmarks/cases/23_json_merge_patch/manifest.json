@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "23_json_merge_patch",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "rfc"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "merge.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_merge.py::test_null_deletes_the_key",
+    "reason": "RFC 7396 null means delete, but the merger writes JSON null instead."
+  }
+}

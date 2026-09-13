@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "44_query_plus",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "query.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_query.py::test_plus_is_a_space_in_form_encoding",
+    "reason": "unquote leaves '+' intact instead of treating it as a form-encoded space."
+  }
+}

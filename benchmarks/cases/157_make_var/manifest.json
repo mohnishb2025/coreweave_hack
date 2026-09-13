@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "157_make_var",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "makes.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_makes.py::test_spaces_around_equals",
+    "reason": "startswith('FOO=') misses 'FOO = bar'."
+  }
+}

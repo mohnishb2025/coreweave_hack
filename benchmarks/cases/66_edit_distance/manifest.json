@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "66_edit_distance",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "distance.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_distance.py::test_mid_string_delete_is_one_edit",
+    "reason": "Hamming-plus-length treats a mid-string delete as two edits."
+  }
+}

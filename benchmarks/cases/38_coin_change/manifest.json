@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "38_coin_change",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "math",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "change.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_change.py::test_greedy_choice_is_not_always_optimal",
+    "reason": "Largest-first greedy change-making overcounts on a non-canonical coin set."
+  }
+}

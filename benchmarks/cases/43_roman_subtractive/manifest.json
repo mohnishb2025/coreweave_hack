@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "43_roman_subtractive",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "math",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "roman.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_roman.py::test_subtractive_pair_is_not_a_sum",
+    "reason": "Each Roman letter is summed, so IV becomes 6 instead of 4."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "33_iso_duration",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "datetime",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "duration.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_duration.py::test_day_and_hour_components",
+    "reason": "Only the hour field is parsed, so day and week components disappear."
+  }
+}

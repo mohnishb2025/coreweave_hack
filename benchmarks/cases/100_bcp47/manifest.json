@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "100_bcp47",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "langs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_langs.py::test_region_stays_upper",
+    "reason": "The whole tag is lowercased, so the region is not uppercased."
+  }
+}

@@ -60,6 +60,37 @@ def test_repair_uses_core_adapter_and_prints_weave_url(monkeypatch) -> None:
     assert "https://wandb.ai/team/repairs/weave" in result.stdout
 
 
+def test_benchmark_builds_a_fresh_orchestrator_per_case(tmp_path: Path, monkeypatch) -> None:
+    created: list[object] = []
+
+    class CountingOrchestrator(FakeOrchestrator):
+        def __init__(self, **kwargs):
+            created.append(kwargs)
+            super().__init__(**kwargs)
+
+    monkeypatch.setattr(cli, "_orchestrator_class", lambda: CountingOrchestrator)
+    monkeypatch.setattr(cli, "_repair_request", lambda case: {"id": case})
+    cases = tmp_path / "cases.json"
+    output = tmp_path / "board.json"
+    cases.write_text(json.dumps([{"id": "case-1"}, {"id": "case-2"}]), encoding="utf-8")
+
+    result = runner.invoke(
+        cli.app,
+        [
+            "benchmark",
+            str(cases),
+            "--model",
+            "model-a",
+            "--variant",
+            "single_pass",
+            "--output",
+            str(output),
+        ],
+    )
+    assert result.exit_code == 0, result.stdout
+    assert len(created) == 2
+
+
 def test_benchmark_writes_offline_leaderboard(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.setattr(cli, "_orchestrator_class", lambda: FakeOrchestrator)
     monkeypatch.setattr(cli, "_repair_request", lambda case: {"id": case})

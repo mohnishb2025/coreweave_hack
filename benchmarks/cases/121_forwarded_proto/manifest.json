@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "121_forwarded_proto",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "protos.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_protos.py::test_leftmost_original_proto",
+    "reason": "The last Forwarded element is used, so a later http hop wins."
+  }
+}

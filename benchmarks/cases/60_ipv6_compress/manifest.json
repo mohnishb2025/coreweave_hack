@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "60_ipv6_compress",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "networking",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "hosts.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_hosts.py::test_loopback_compressed_matches_expanded",
+    "reason": "IPv6 equality is compared as raw strings, so compressed and expanded forms miss."
+  }
+}

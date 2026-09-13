@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "56_empty_mean",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "exceptions",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "average.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_average.py::test_empty_list_is_a_value_error",
+    "reason": "An empty list divides by zero, and non-empty lists use integer division."
+  }
+}

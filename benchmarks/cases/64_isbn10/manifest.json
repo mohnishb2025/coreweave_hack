@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "64_isbn10",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "checksum",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "isbn.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_isbn.py::test_plain_isbn10",
+    "reason": "ISBN-10 uses weighted mod-11, including X as 10, not a digit sum."
+  }
+}

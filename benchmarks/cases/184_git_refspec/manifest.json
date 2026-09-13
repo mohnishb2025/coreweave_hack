@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "184_git_refspec",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "refspecs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_refspecs.py::test_forced_main",
+    "reason": "The leading + force flag is left on the source ref."
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "48_title_apostrophe",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "transformation",
+    "strings",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "titles.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_titles.py::test_apostrophe_does_not_start_a_new_word",
+    "reason": "str.title treats the letter after an apostrophe as a new word, so it's becomes It'S."
+  }
+}

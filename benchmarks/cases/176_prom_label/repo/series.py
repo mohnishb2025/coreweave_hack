@@ -1,0 +1,2 @@
+def labels(text):
+    return {}

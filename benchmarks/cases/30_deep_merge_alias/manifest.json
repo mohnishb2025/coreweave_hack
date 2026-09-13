@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "30_deep_merge_alias",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "mutable-state",
+    "transformation",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "merge.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_merge.py::test_nested_mutation_does_not_change_input",
+    "reason": "The merger aliases the caller's nested mappings instead of copying them."
+  }
+}

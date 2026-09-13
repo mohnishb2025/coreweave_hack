@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "168_cookie_path",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "cpaths.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_cpaths.py::test_admin_path",
+    "reason": "Path is ignored and every cookie is treated as /."
+  }
+}

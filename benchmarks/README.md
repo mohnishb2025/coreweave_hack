@@ -1,6 +1,8 @@
 # Repair Loop benchmark
 
-This corpus contains 15 deliberately buggy, compact Python repositories. Each
+This corpus contains 185 deliberately buggy, compact Python repositories. Cases
+16-185 are written so a public-test-only special case still fails hidden checks.
+Each
 case has this layout:
 
 ```text

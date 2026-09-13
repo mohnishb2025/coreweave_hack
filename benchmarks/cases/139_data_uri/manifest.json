@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "139_data_uri",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "parsing",
+    "encoding",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "payloads.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_payloads.py::test_base64_payload",
+    "reason": "The data URI is split on comma but Base64 is not decoded."
+  }
+}

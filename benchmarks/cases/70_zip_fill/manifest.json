@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "70_zip_fill",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "pairs.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_pairs.py::test_right_is_padded",
+    "reason": "zip stops at the shorter list instead of padding."
+  }
+}

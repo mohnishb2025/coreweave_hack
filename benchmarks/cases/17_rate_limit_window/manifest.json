@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "17_rate_limit_window",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "boundary",
+    "time",
+    "multi-file"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "limiter/__init__.py",
+    "limiter/policy.py",
+    "limiter/window.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_limiter.py::test_event_on_window_boundary_still_counts",
+    "reason": "The sliding window uses a strict inequality, so boundary events are ignored."
+  }
+}

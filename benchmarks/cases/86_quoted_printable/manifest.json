@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "86_quoted_printable",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "encoding",
+    "parsing",
+    "adversarial"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "quoted.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_quoted.py::test_utf8_hex_bytes",
+    "reason": "Only soft line breaks are stripped, so =C3=A9 stays encoded."
+  }
+}
