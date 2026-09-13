@@ -44,9 +44,7 @@ class GitHubActionsVerifier:
         env_owner, env_repository = (None, None)
         if "/" in repository_env:
             env_owner, env_repository = repository_env.split("/", 1)
-        self.owner = (
-            config.owner or os.getenv("GITHUB_REPOSITORY_OWNER") or env_owner
-        )
+        self.owner = config.owner or os.getenv("GITHUB_REPOSITORY_OWNER") or env_owner
         self.repository = config.repository or env_repository
         self.token = (
             token
