@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "12_iso_timestamp",
+  "language": "python",
+  "difficulty": "medium",
+  "tags": [
+    "parsing",
+    "datetime"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "timestamps.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_timestamps.py::test_utc_z_suffix",
+    "reason": "The parser rejects ISO-8601 timezone suffixes."
+  }
+}

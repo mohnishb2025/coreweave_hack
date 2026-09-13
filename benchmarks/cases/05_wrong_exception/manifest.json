@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "05_wrong_exception",
+  "language": "python",
+  "difficulty": "easy",
+  "tags": [
+    "exceptions",
+    "validation"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "users.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_users.py::test_missing_email_is_validation_error",
+    "reason": "Validation raises KeyError instead of ValueError."
+  }
+}

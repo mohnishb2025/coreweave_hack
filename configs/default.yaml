@@ -1,0 +1,42 @@
+model: null
+variant: full_team
+project: mohnishb/repair-loop
+role_models:
+  diagnoser: deepseek-ai/DeepSeek-V4-Pro-0813
+  manager: deepseek-ai/DeepSeek-V4-Pro-0813
+  fixer: Qwen/Qwen3.8-27B
+  critic: zai-org/GLM-5.3-Flash
+  qa: ibm-granite/granite-4.2-8b
+temperature: 0.0
+seed: 17
+max_iterations: 3
+candidates_per_iteration: 2
+use_diagnoser: true
+use_critic: true
+budgets:
+  max_model_calls: 24
+  max_input_tokens: 200000
+  max_output_tokens: 50000
+  max_candidates: 6
+  max_cost_usd: 10.0
+patch_policy:
+  max_bytes: 40000
+  max_changed_lines: 800
+  max_files: 12
+sandbox:
+  image: repair-loop-runner:latest
+  command: ["python", "-m", "pytest", "-q"]
+  timeout_seconds: 600
+  cpus: 2.0
+  memory: 4g
+  pids_limit: 256
+verifier: github_actions
+github_actions:
+  owner: null
+  repository: null
+  workflow: verify-candidate.yml
+  ref: main
+  timeout_seconds: 900
+  poll_interval_seconds: 5
+  max_payload_bytes: 48000
+checkpoint_dir: .repair-loop/checkpoints

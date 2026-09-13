@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "03_csv_parsing",
+  "language": "python",
+  "difficulty": "medium",
+  "tags": [
+    "parsing",
+    "csv"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "records.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_records.py::test_quoted_comma",
+    "reason": "Naive comma splitting does not implement CSV quoting."
+  }
+}

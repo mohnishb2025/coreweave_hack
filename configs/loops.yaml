@@ -1,0 +1,21 @@
+variants:
+  single_pass:
+    max_iterations: 1
+    candidates_per_iteration: 1
+    use_diagnoser: false
+    use_critic: false
+  retry_only:
+    max_iterations: 3
+    candidates_per_iteration: 1
+    use_diagnoser: false
+    use_critic: false
+  diagnose_fix:
+    max_iterations: 3
+    candidates_per_iteration: 1
+    use_diagnoser: true
+    use_critic: false
+  full_team:
+    max_iterations: 3
+    candidates_per_iteration: 2
+    use_diagnoser: true
+    use_critic: true

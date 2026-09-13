@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "15_inventory_multifile",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "mutable-state",
+    "multi-file",
+    "domain"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "inventory/__init__.py",
+    "inventory/model.py",
+    "inventory/service.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_inventory.py::test_before_snapshot_is_unchanged",
+    "reason": "The snapshot aliases the live mutable stock mapping."
+  }
+}

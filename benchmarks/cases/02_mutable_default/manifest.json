@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "02_mutable_default",
+  "language": "python",
+  "difficulty": "easy",
+  "tags": [
+    "mutable-state",
+    "state-leak"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "collector.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_collector.py::test_calls_are_independent",
+    "reason": "A mutable default leaks values between calls."
+  }
+}

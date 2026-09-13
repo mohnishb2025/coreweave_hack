@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "11_stable_dedupe",
+  "language": "python",
+  "difficulty": "easy",
+  "tags": [
+    "transformation",
+    "ordering"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "dedupe.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_dedupe.py::test_first_seen_order_is_preserved",
+    "reason": "Set conversion destroys first-seen ordering."
+  }
+}

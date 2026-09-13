@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "04_async_lookup",
+  "language": "python",
+  "difficulty": "easy",
+  "tags": [
+    "async",
+    "await"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "lookup.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_lookup.py::test_fetch_name_awaits_client",
+    "reason": "The asynchronous client call is not awaited."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "06_snake_case",
+  "language": "python",
+  "difficulty": "medium",
+  "tags": [
+    "transformation",
+    "strings"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "naming.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_naming.py::test_acronym_is_one_word",
+    "reason": "Every acronym letter receives its own separator."
+  }
+}

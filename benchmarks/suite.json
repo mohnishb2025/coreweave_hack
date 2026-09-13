@@ -1,0 +1,19 @@
+{
+  "cases": [
+    "01_clamp_boundary",
+    "02_mutable_default",
+    "03_csv_parsing",
+    "04_async_lookup",
+    "05_wrong_exception",
+    "06_snake_case",
+    "07_pagination_multifile",
+    "08_cache_multifile",
+    "09_config_multifile",
+    "10_chunk_boundary",
+    "11_stable_dedupe",
+    "12_iso_timestamp",
+    "13_async_retry",
+    "14_extension_transform",
+    "15_inventory_multifile"
+  ]
+}

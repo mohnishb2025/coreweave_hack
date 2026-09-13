@@ -1,0 +1,19 @@
+profiles:
+  default:
+    diagnoser: deepseek-ai/DeepSeek-V4-Pro-0813
+    manager: deepseek-ai/DeepSeek-V4-Pro-0813
+    fixer: Qwen/Qwen3.8-27B
+    critic: zai-org/GLM-5.3-Flash
+    qa: ibm-granite/granite-4.2-8b
+  economical:
+    diagnoser: nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B
+    manager: ibm-granite/granite-4.2-8b
+    fixer: Qwen/Qwen3.8-27B
+    critic: zai-org/GLM-5.3-Flash
+    qa: ibm-granite/granite-4.2-8b
+  single_model:
+    diagnoser: Qwen/Qwen3.8-27B
+    manager: Qwen/Qwen3.8-27B
+    fixer: Qwen/Qwen3.8-27B
+    critic: Qwen/Qwen3.8-27B
+    qa: Qwen/Qwen3.8-27B

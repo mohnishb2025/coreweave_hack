@@ -1,0 +1,23 @@
+{
+  "name": "Repair Loop Codespace",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && $HOME/.local/bin/uv sync --extra dev --extra demo",
+  "forwardPorts": [2718],
+  "portsAttributes": {
+    "2718": {
+      "label": "marimo Repair Lab",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "charliermarsh.ruff",
+        "ms-python.python"
+      ]
+    }
+  }
+}

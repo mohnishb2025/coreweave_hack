@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "14_extension_transform",
+  "language": "python",
+  "difficulty": "easy",
+  "tags": [
+    "transformation",
+    "paths"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "paths.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_paths.py::test_dotted_directory_and_filename",
+    "reason": "Splitting on the first dot corrupts dotted paths."
+  }
+}

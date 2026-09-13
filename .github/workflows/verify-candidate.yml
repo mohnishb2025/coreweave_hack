@@ -1,0 +1,83 @@
+name: Verify repair candidate
+run-name: repair-loop:${{ inputs.request_id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_id:
+        description: Correlation ID
+        required: true
+        type: string
+      case_id:
+        description: Checked-in benchmark case ID
+        required: true
+        type: string
+      candidate_id:
+        description: Candidate patch ID
+        required: true
+        type: string
+      patch_b64:
+        description: Gzip-compressed, base64-encoded unified diff
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repair-loop-${{ inputs.request_id }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install verifier
+        run: uv sync --frozen
+
+      - name: Build isolated runner
+        run: docker build -t repair-loop-runner:latest -f docker/Dockerfile .
+
+      - name: Materialize data input
+        env:
+          PATCH_B64: ${{ inputs.patch_b64 }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          Path(".repair-loop").mkdir(exist_ok=True)
+          Path(".repair-loop/candidate.b64").write_text(
+              os.environ["PATCH_B64"], encoding="ascii"
+          )
+          PY
+
+      - name: Verify inside remote container
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+          CASE_ID: ${{ inputs.case_id }}
+          CANDIDATE_ID: ${{ inputs.candidate_id }}
+        run: |
+          uv run python -m repair_loop.remote_worker \
+            --request-id "$REQUEST_ID" \
+            --case-id "$CASE_ID" \
+            --candidate-id "$CANDIDATE_ID" \
+            --patch-file .repair-loop/candidate.b64 \
+            --result .repair-loop/result.json
+
+      - name: Upload schema-validated result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-${{ inputs.request_id }}
+          path: .repair-loop/result.json
+          if-no-files-found: error
+          retention-days: 7

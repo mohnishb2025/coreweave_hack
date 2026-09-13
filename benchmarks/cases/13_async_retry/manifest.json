@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "13_async_retry",
+  "language": "python",
+  "difficulty": "medium",
+  "tags": [
+    "async",
+    "boundary",
+    "retry"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "retry.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_retry.py::test_retries_means_extra_attempts",
+    "reason": "Retries are counted as total attempts instead of extra attempts."
+  }
+}

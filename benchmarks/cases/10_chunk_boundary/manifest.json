@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "id": "10_chunk_boundary",
+  "language": "python",
+  "difficulty": "easy",
+  "tags": [
+    "boundary",
+    "collections"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "chunks.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_chunks.py::test_exact_chunk_is_retained",
+    "reason": "The range stop drops exact and trailing chunks."
+  }
+}

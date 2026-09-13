@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "09_config_multifile",
+  "language": "python",
+  "difficulty": "medium",
+  "tags": [
+    "parsing",
+    "multi-file",
+    "configuration"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "config/__init__.py",
+    "config/loader.py",
+    "config/parser.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_config.py::test_false_string",
+    "reason": "Non-empty false-like strings are treated as true."
+  }
+}

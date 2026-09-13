@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "08_cache_multifile",
+  "language": "python",
+  "difficulty": "hard",
+  "tags": [
+    "mutable-state",
+    "multi-file",
+    "cache"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "store/__init__.py",
+    "store/cache.py",
+    "store/service.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_cache.py::test_falsey_profile_is_cached",
+    "reason": "Truthiness is mistaken for cache membership."
+  }
+}

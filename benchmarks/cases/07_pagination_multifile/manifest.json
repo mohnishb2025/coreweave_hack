@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "07_pagination_multifile",
+  "language": "python",
+  "difficulty": "medium",
+  "tags": [
+    "boundary",
+    "multi-file",
+    "pagination"
+  ],
+  "repository": "repo",
+  "hidden_tests": "hidden_tests",
+  "allowed_source_paths": [
+    "pager/__init__.py",
+    "pager/math.py",
+    "pager/service.py"
+  ],
+  "test_commands": {
+    "public": "python -m pytest -q tests",
+    "hidden": "python -m pytest -q ../hidden_tests"
+  },
+  "expected_failure": {
+    "nodeid": "tests/test_pager.py::test_partial_page_counts",
+    "reason": "Shared division helper truncates partial pages."
+  }
+}
