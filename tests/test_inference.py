@@ -3,7 +3,12 @@ from types import SimpleNamespace
 
 import pytest
 
-from repair_loop.inference import InferenceClient, InferenceError, compact_context
+from repair_loop.inference import (
+    InferenceClient,
+    InferenceError,
+    compact_context,
+    resolve_project,
+)
 from repair_loop.schemas import QAResult
 
 
@@ -45,6 +50,13 @@ def test_rejects_unavailable_configured_model() -> None:
     client = InferenceClient(client=FakeOpenAI(), model="missing")
     with pytest.raises(InferenceError):
         client.resolve_model()
+
+
+def test_project_routing_includes_entity(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("WANDB_ENTITY", "team")
+    monkeypatch.setenv("WANDB_PROJECT", "repairs")
+    assert resolve_project() == "team/repairs"
+    assert resolve_project("other/project") == "other/project"
 
 
 def test_context_is_bounded_from_the_end() -> None:

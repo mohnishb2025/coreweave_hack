@@ -67,6 +67,15 @@ def resolve_api_key(explicit: str | None = None) -> str | None:
     return None
 
 
+def resolve_project(explicit: str | None = None) -> str | None:
+    """Resolve W&B's required ``entity/project`` inference routing value."""
+    project = explicit or os.getenv("WANDB_PROJECT")
+    if not project or "/" in project:
+        return project
+    entity = os.getenv("WANDB_ENTITY")
+    return f"{entity}/{project}" if entity else project
+
+
 class InferenceClient:
     """Small synchronous client suitable for deterministic threaded orchestration."""
 
@@ -85,7 +94,7 @@ class InferenceClient:
         if client is None and not key:
             raise InferenceError("WANDB_API_KEY is required")
         headers: dict[str, str] = {}
-        project_name = project or os.getenv("WANDB_PROJECT")
+        project_name = resolve_project(project)
         if project_name:
             headers["OpenAI-Project"] = project_name
         self._client = client or OpenAI(
